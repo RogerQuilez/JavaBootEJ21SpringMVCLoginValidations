@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.curso.babel.model.entity.Usuario;
 import es.curso.babel.model.service.UsuarioService;
 import es.curso.babel.model.service.impl.UsuarioServiceImpl;
 
