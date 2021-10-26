@@ -30,6 +30,7 @@ public class LoginController extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		if (userService.isUsuarioRegistered(username, password)) {
+			request.setAttribute("username", username);
 			request.getRequestDispatcher("/VideojuegoController").forward(request, response);
 		} else {
 			request.setAttribute("error", "Unknown user, please try again");

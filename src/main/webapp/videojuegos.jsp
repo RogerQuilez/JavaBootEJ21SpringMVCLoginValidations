@@ -23,6 +23,10 @@
         display: flex;
         justify-content: center;
       }
+      
+      ul {
+      	list-style-type: none;
+      }
 
       table {
         width: 800px;
@@ -69,6 +73,17 @@
     </style>
   </head>
   <body>
+  
+
+
+  	<header>
+	    <nav>
+	    	<ul>
+	    		<li><h1>Bienvenido ${username}</h1></li>
+	    	</ul>
+	    </nav>
+	</header>
+
   
     <table>
     

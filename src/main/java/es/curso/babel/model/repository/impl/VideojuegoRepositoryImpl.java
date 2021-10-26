@@ -47,7 +47,6 @@ public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 	
 	@Override
 	public List<Videojuego> getAllVideojuegos() {
-		System.out.println(inMemoryVideojuegos.toString());
 		return inMemoryVideojuegos;
 	}
 
