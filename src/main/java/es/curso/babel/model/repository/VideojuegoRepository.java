@@ -1,4 +1,4 @@
-package es.curso.babel.repository;
+package es.curso.babel.model.repository;
 
 import java.util.List;
 

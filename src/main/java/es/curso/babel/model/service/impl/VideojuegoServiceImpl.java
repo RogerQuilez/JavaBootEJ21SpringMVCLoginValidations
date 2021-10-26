@@ -3,9 +3,9 @@ package es.curso.babel.model.service.impl;
 import java.util.List;
 
 import es.curso.babel.model.entity.Videojuego;
+import es.curso.babel.model.repository.VideojuegoRepository;
+import es.curso.babel.model.repository.impl.VideojuegoRepositoryImpl;
 import es.curso.babel.model.service.VideojuegoService;
-import es.curso.babel.repository.VideojuegoRepository;
-import es.curso.babel.repository.impl.VideojuegoRepositoryImpl;
 
 public class VideojuegoServiceImpl implements VideojuegoService {
 	

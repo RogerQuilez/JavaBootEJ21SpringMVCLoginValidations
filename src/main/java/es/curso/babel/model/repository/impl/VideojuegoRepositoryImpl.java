@@ -1,10 +1,10 @@
-package es.curso.babel.repository.impl;
+package es.curso.babel.model.repository.impl;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import es.curso.babel.model.entity.Videojuego;
-import es.curso.babel.repository.VideojuegoRepository;
+import es.curso.babel.model.repository.VideojuegoRepository;
 
 public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 	

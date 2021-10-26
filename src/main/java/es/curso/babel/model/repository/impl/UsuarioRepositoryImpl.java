@@ -1,10 +1,10 @@
-package es.curso.babel.repository.impl;
+package es.curso.babel.model.repository.impl;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import es.curso.babel.model.entity.Usuario;
-import es.curso.babel.repository.UsuarioRepository;
+import es.curso.babel.model.repository.UsuarioRepository;
 
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 	
