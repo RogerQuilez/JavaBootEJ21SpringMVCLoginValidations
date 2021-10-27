@@ -3,6 +3,7 @@ package es.curso.babel.model.entity;
 public class Videojuego {
 	
 	private int id;
+	private String imagen;
 	private String nombre;
 	private String compania;
 	private double nota;
@@ -46,6 +47,14 @@ public class Videojuego {
 	
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 }

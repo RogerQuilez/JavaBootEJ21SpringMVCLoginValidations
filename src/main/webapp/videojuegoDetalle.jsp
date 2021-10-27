@@ -131,7 +131,7 @@ button:last-of-type:hover {
 	
 	<div class="card">
 
-    <img src="<%= request.getContextPath()%>/imagen${videojuego.id}.jpg" alt="hero">
+    <img src="<%= request.getContextPath()%>/${videojuego.imagen}" alt="hero">
     <h2>${videojuego.nombre }</h2>
       
       <div>
