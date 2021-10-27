@@ -2,14 +2,18 @@ package es.curso.babel.model.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import es.curso.babel.model.entity.Videojuego;
 import es.curso.babel.model.repository.VideojuegoRepository;
-import es.curso.babel.model.repository.impl.VideojuegoRepositoryImpl;
 import es.curso.babel.model.service.VideojuegoService;
 
+@Service
 public class VideojuegoServiceImpl implements VideojuegoService {
 	
-	private VideojuegoRepository videoRepo = new VideojuegoRepositoryImpl();
+	@Autowired
+	private VideojuegoRepository videoRepo;
 
 	@Override
 	public List<Videojuego> getAllVideojuegos() {

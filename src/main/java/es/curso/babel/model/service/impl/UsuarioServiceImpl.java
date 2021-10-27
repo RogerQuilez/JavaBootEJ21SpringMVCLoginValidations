@@ -2,14 +2,18 @@ package es.curso.babel.model.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import es.curso.babel.model.entity.Usuario;
 import es.curso.babel.model.repository.UsuarioRepository;
-import es.curso.babel.model.repository.impl.UsuarioRepositoryImpl;
 import es.curso.babel.model.service.UsuarioService;
 
+@Service
 public class UsuarioServiceImpl implements UsuarioService {
 	
-	private UsuarioRepository userRepo = new UsuarioRepositoryImpl();
+	@Autowired
+	private UsuarioRepository userRepo;
 
 	@Override
 	public List<Usuario> getAllUsuarios() {

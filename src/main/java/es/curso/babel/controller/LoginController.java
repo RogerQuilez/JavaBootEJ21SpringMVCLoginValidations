@@ -1,42 +1,36 @@
 package es.curso.babel.controller;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import es.curso.babel.model.service.UsuarioService;
-import es.curso.babel.model.service.impl.UsuarioServiceImpl;
 
-@WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    public LoginController() {
-        super();
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+@Controller
+public class LoginController {
+	
+	@Autowired
+	private UsuarioService userService;
+	
+	@GetMapping("login")
+	public String getLogin() {
+		return "login";
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UsuarioService userService = new UsuarioServiceImpl();
-		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		
+	@PostMapping("login")
+	public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
+
 		if (userService.isUsuarioRegistered(username, password)) {
-			request.setAttribute("username", username);
-			request.getRequestDispatcher("/VideojuegoController").forward(request, response);
+			return "redirect:/videojuegos";
 		} else {
-			request.setAttribute("error", "Unknown user, please try again");
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
-		}		
-		
+			model.addAttribute("error", "Unknown user, please try again");
+			return "login";
+		}
+
 	}
+
 
 }

@@ -3,9 +3,12 @@ package es.curso.babel.model.repository.impl;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import es.curso.babel.model.entity.Usuario;
 import es.curso.babel.model.repository.UsuarioRepository;
 
+@Repository
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 	
 	private final List<Usuario> inMemoryUsuarios = new LinkedList<Usuario>();

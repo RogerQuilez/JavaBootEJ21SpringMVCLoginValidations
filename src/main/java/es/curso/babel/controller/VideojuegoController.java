@@ -1,38 +1,34 @@
 package es.curso.babel.controller;
 
-import java.io.IOException;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import es.curso.babel.model.entity.Videojuego;
 import es.curso.babel.model.service.VideojuegoService;
-import es.curso.babel.model.service.impl.VideojuegoServiceImpl;
 
-/**
- * Servlet implementation class VideojuegoController
- */
-@WebServlet("/VideojuegoController")
-public class VideojuegoController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private VideojuegoService videoService = new VideojuegoServiceImpl();
-       
-    public VideojuegoController() {
-        super();
-    }
+@Controller
+@RequestMapping("videojuegos")
+public class VideojuegoController {
+	
+	@Autowired
+	private VideojuegoService videoService;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Videojuego> videojuegos = videoService.getAllVideojuegos();
-		request.setAttribute("videojuegos", videojuegos);
-		request.getRequestDispatcher("/videojuegos.jsp").forward(request, response);
+	@GetMapping("")
+	public ModelAndView getVideojuegos() {
+		ModelAndView modelView = new ModelAndView("videojuegos");
+		modelView.addObject("videojuegos", videoService.getAllVideojuegos());
+		return modelView;
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+	
+	@GetMapping("/videojuegoDetalle")
+	public ModelAndView getVideojuegoDetalle(@RequestParam("id") String id) {
+		ModelAndView modelView = new ModelAndView("videojuegoDetalle");
+		Integer idInt = Integer.parseInt(id);
+		modelView.addObject("videojuego", videoService.findVideojuegoById(idInt));
+		return modelView;
 	}
 
 }

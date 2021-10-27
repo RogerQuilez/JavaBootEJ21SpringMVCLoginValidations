@@ -3,9 +3,12 @@ package es.curso.babel.model.repository.impl;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import es.curso.babel.model.entity.Videojuego;
 import es.curso.babel.model.repository.VideojuegoRepository;
 
+@Repository
 public class VideojuegoRepositoryImpl implements VideojuegoRepository {
 	
 	private final List<Videojuego> inMemoryVideojuegos = new LinkedList<Videojuego>();

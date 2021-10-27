@@ -23,10 +23,6 @@
         display: flex;
         justify-content: center;
       }
-      
-      ul {
-      	list-style-type: none;
-      }
 
       table {
         width: 800px;
@@ -74,17 +70,6 @@
   </head>
   <body>
   
-
-
-  	<header>
-	    <nav>
-	    	<ul>
-	    		<li><h1>Bienvenido ${username}</h1></li>
-	    	</ul>
-	    </nav>
-	</header>
-
-  
     <table>
     
       <thead>
@@ -106,7 +91,7 @@
           <td><c:out value="${videojuego.nombre}"></c:out></td>
           <td><c:out value="${videojuego.compania}"></c:out></td>
           <td><c:out value="${videojuego.nota}"></c:out></td>
-          <td><a href = "<c:url value="VideojuegoDetalleController">
+          <td><a href = "<c:url value="videojuegos/videojuegoDetalle">
                 				<c:param name="id" value="${videojuego.id}"/>
          				</c:url>"><button>Ver más</button></a></td>
         </tr>

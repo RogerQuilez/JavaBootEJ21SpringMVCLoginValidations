@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -131,7 +132,7 @@ button:last-of-type:hover {
 	
 	<div class="card">
 
-    <img src="${pageContext.request.contextPath}/${videojuego.imagen}" alt="hero">
+    <img src="<spring:url value="/images/${videojuego.imagen}"/>" alt="hero">
     <h2>${videojuego.nombre }</h2>
       
       <div>

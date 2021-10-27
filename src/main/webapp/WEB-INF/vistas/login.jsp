@@ -153,7 +153,7 @@
     <section class="container">
     <h1>Have an account? Sign in</h1>
     <h2>${empty error ? "" : error}</h2>
-	    <form action="LoginController" method="POST">
+	    <form action="login" method="POST">
 	        <input class="input" placeholder="Username" name="username">
 	        <input type="password" class="input" placeholder="Password" name="password">
 	        <button type="submit" class="login">Login</button>
