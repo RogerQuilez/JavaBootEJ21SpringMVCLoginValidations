@@ -18,7 +18,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public boolean isUsuarioRegistered(String username, String password) {
-		return userRepo.isUsuarioRegistered(username, password);
+		Usuario user = userRepo.findUsuarioByUsername(username);
+		if (user != null) {
+			if (user.getUsername().equals(username) &&
+					user.getPassword().equals(password)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

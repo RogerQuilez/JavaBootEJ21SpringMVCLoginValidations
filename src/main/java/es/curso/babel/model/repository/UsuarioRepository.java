@@ -7,5 +7,5 @@ import es.curso.babel.model.entity.Usuario;
 public interface UsuarioRepository {
 
 	List<Usuario> getAllUsuarios();
-	boolean isUsuarioRegistered(String username, String password);
+	Usuario findUsuarioByUsername(String username);
 }

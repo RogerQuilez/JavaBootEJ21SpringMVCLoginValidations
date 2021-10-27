@@ -25,15 +25,12 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 	}
 
 	@Override
-	public boolean isUsuarioRegistered(String username, String password) {
+	public Usuario findUsuarioByUsername(String username) {
 		
 		for (Usuario u: inMemoryUsuarios) {
-			if (username.equals(u.getUsername()) &&
-					password.equals(u.getPassword())) {
-				return true;
-			}
+			if (username.equals(u.getUsername())) return u;
 		}
-		return false;
+		return null;
 	}
 
 	@Override
