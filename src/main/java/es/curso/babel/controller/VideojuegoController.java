@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,37 +37,27 @@ public class VideojuegoController {
 		return modelView;
 	}
 	
-	@GetMapping("/formVideojuego")
-	public String getFormVideojuego(@RequestParam(required=false) String id, Model model) {
-		if (id != null) {
-			model.addAttribute("videojuego", videoService.findVideojuegoById(Integer.parseInt(id)));
-		}
-		return "formVideojuego";
-	}
-	
 	@GetMapping("/videojuegoDelete")
 	public String eliminarVideojuego(@RequestParam("id") String id, Model model) {
 		videoService.eliminarVideojuego(Integer.parseInt(id));
 		return "redirect:/videojuegos";
 	}
 	
-	@PostMapping("/formVideojuego")
-	public String newVideojuego(@RequestParam(required=false) String id, @RequestParam("author") String author, 
-			@RequestParam("compania") String compania, @RequestParam("nombre") String nombre, 
-			@RequestParam("nota") String nota, Model model) {
-		
-		Videojuego videojuego;
+	@GetMapping("/formVideojuego")
+	public String getFormVideojuego(@RequestParam(required=false) String id, Model model) {
 		
 		if (id != null) {
-			videojuego = videoService.findVideojuegoById(Integer.parseInt(id));
+			model.addAttribute("videojuego", videoService.findVideojuegoById(Integer.parseInt(id)));
 		} else {
-			videojuego = new Videojuego();
+			model.addAttribute("videojuego", new Videojuego());
 		}
+		return "formVideojuego";
+	}
+	
+	@PostMapping("/formVideojuego")
+	public String newVideojuego(@RequestParam(required=false) String id, 
+			@ModelAttribute("videojuego") Videojuego videojuego, Model model) {
 		
-		videojuego.setAuthor(author);
-		videojuego.setCompania(compania);
-		videojuego.setNombre(nombre);
-		videojuego.setNota(Double.parseDouble(nota));
 		videojuego.setImagen("imagen-default.jpg");
 		
 		List<String> messages = videoService.añadirVideojuego(videojuego);

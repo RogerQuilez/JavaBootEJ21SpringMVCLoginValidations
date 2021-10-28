@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,13 +126,13 @@ h2 {
 				<h2>${message}</h2>
 			</c:forEach>
 		</c:if>
-		<form action="" method="POST">
-			<input class="input" placeholder="Nombre" value="${empty videojuego.nombre ? '' : videojuego.nombre }" name="nombre"/>
-			<input class="input" placeholder="Author" value="${empty videojuego.author ? '' : videojuego.author }" name="author"/>
-		    <input class="input" placeholder="Compania" value="${empty videojuego.compania ? '' : videojuego.compania }" name="compania"/>
-		    <input class="input" placeholder="Nota" value="${empty videojuego.nota ? '' : videojuego.nota }" name="nota"/>
-			<button type="submit" class="signup-button">${empty videojuego ? 'Crear' : 'Modificar'}</button>
-		</form>
+		<form:form action="" method="POST" modelAttribute="videojuego">
+			<form:input class="input" placeholder="Nombre" path="nombre"/>
+			<form:input class="input" placeholder="Author" path="author"/>
+		    <form:input class="input" placeholder="Compania" path="compania"/>
+		    <form:input class="input" placeholder="Nota" path="nota"/>
+			<button type="submit" class="signup-button">${empty videojuego.nombre ? 'Crear' : 'Modificar'}</button>
+		</form:form>
 	</div>
 </body>
 </html>
