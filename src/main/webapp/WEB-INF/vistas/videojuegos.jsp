@@ -7,6 +7,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <title>Table Component</title>
     
     <style>
@@ -48,6 +50,10 @@
       tbody tr:nth-child(odd){
         background-color: #f8f9fa;
       }
+      
+      a {
+      	text-decoration: none;
+      }
 
       
       tbody tr:nth-child(even){
@@ -57,18 +63,51 @@
       button {
 		    display: block;
 		    height: 50px;
-		    width: 150px;
+		    width: 100px;
 		    background-color: #5F4785;
 		    color: #FFFFFF;
 		    font-family: Open Sans;
-		    font-weight: 400;
-		    font-size: 20px;
+		    font-weight: 200;
+		    font-size: 15px;
 		    text-transform: uppercase;
 		    border-radius: 3px 3px;
+		}
+		
+		.eliminar {
+			background-color: #D61818;
+		}
+		
+		.modificar {
+			background-color: #087f5b;
+		}
+		
+	
+		.float{
+			position:fixed;
+			width:60px;
+			height:60px;
+			bottom:40px;
+			right:40px;
+			background-color:#0C9;
+			color:#FFF;
+			border-radius:50px;
+			text-align:center;
+			box-shadow: 2px 2px 3px #999;
+		}
+		
+		.my-float{
+			margin-top:8px;
+			font-size: 40px;
 		}
     </style>
   </head>
   <body>
+  
+  	<a href="videojuegos/formVideojuego" class="float">
+		<span class="material-icons my-float">
+			add
+		</span>
+	</a>
   
     <table>
     
@@ -79,6 +118,8 @@
           <th>Nombre</th>
           <th>Compañia</th>
           <th>Nota Media</th>
+          <th></th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -93,7 +134,15 @@
           <td><c:out value="${videojuego.nota}"></c:out></td>
           <td><a href = "<c:url value="videojuegos/videojuegoDetalle">
                 				<c:param name="id" value="${videojuego.id}"/>
-         				</c:url>"><button>Ver más</button></a></td>
+         				</c:url>"><button class="detalle">Ver más</button></a></td>
+         				
+         <td><a href = "<c:url value="videojuegos/formVideojuego">
+                				<c:param name="id" value="${videojuego.id}"/>
+         				</c:url>"><button class="modificar">Modificar</button></a></td>
+         				
+         <td><a href = "<c:url value="videojuegos/videojuegoDelete">
+                				<c:param name="id" value="${videojuego.id}"/>
+         				</c:url>"><button class="eliminar">Eliminar</button></a></td>
         </tr>
       </c:forEach> 
         

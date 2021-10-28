@@ -1,7 +1,12 @@
 package es.curso.babel.model.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario {
 	
+	@Id
 	private String username;
 	private String password;
 	

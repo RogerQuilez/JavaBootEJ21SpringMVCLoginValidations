@@ -8,4 +8,5 @@ public interface UsuarioService {
 
 	List<Usuario> getAllUsuarios();
 	boolean isUsuarioRegistered(String username, String password);
+	List<String> añadirUsuario(String username, String password);
 }

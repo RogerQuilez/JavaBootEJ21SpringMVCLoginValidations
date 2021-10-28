@@ -1,17 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale= 1.0">
-<link href="style.css" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-	rel="stylesheet">
-<title>Exercise 1 Option 2</title>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 
 <style>
 * {
@@ -33,10 +27,6 @@ body {
 	transform: translate(-50%, -50%);
 	text-align: center;
 	color: white;
-}
-
-#signup-panel {
-	visibility: hidden;
 }
 
 #login-panel h3, #signup-panel h3 {
@@ -76,7 +66,7 @@ input:focus {
 	border: none;
 	background-color: #1297E0;
 	color: white;
-	width: 100%;
+	width: 47%;
 	margin-top: 5px;
 	border-bottom: 2px solid #0267A0;
 }
@@ -124,20 +114,24 @@ h2 {
 	}
 }
 </style>
+
 </head>
-
 <body>
-
-	<div id="login-panel">
-		<h3>Iniciar sesión</h3>
-		<h2>${empty message ? "" : message}</h2>
-		<form action="login" method="POST">
-			<input type="text" name="username" placeholder="Usuario"> <input
-				type="password" name="password" placeholder="Contraseña">
-			<button type="submit" class="signup-button">Entrar</button>
+    
+    <div id="signup-panel">
+		<h3>Añadir Videojuego</h3>
+		<c:if test="${messages != null }">
+			<c:forEach items="${messages}" var="message">
+				<h2>${message}</h2>
+			</c:forEach>
+		</c:if>
+		<form action="" method="POST">
+			<input class="input" placeholder="Nombre" value="${empty videojuego.nombre ? '' : videojuego.nombre }" name="nombre"/>
+			<input class="input" placeholder="Author" value="${empty videojuego.author ? '' : videojuego.author }" name="author"/>
+		    <input class="input" placeholder="Compania" value="${empty videojuego.compania ? '' : videojuego.compania }" name="compania"/>
+		    <input class="input" placeholder="Nota" value="${empty videojuego.nota ? '' : videojuego.nota }" name="nota"/>
+			<button type="submit" class="signup-button">${empty videojuego ? 'Crear' : 'Modificar'}</button>
 		</form>
-		<a href="formLogin"><button class="signup-button">Registrarse</button></a>
 	</div>
-
 </body>
 </html>
