@@ -35,7 +35,8 @@ public class VideojuegoServiceImpl implements VideojuegoService {
 		if (videojuego.getNombre() == "") messages.add("El videojuego debe tener un nombre");
 		if (videojuego.getNota() < 0 || videojuego.getNota() > 10) messages.add("La nota del videojuego"
 				+ " debe estar entre 1-10");
-		if (messages.size() == 0) {
+		
+		if (messages.isEmpty()) {
 			videoRepo.save(videojuego);
 			messages.add("Alta correcta");
 		}
