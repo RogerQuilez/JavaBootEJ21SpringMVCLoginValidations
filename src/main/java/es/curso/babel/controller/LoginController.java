@@ -15,13 +15,14 @@ public class LoginController {
 	@Autowired
 	private UsuarioService userService;
 	
-	@GetMapping("login")
+	@GetMapping("")
 	public String getLogin() {
 		return "login";
 	}
 
 	@PostMapping("login")
-	public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
+	public String login(@RequestParam("username") String username, 
+			@RequestParam("password") String password, Model model) {
 
 		if (userService.isUsuarioRegistered(username, password)) {
 			return "redirect:/videojuegos";
@@ -31,6 +32,5 @@ public class LoginController {
 		}
 
 	}
-
 
 }
