@@ -38,16 +38,16 @@ public class VideojuegoController {
 	}
 	
 	@GetMapping("/videojuegoDelete")
-	public String eliminarVideojuego(@RequestParam("id") String id, Model model) {
+	public String eliminarVideojuego(@RequestParam("id") String id) {
 		videoService.eliminarVideojuego(Integer.parseInt(id));
 		return "redirect:/videojuegos";
 	}
 	
 	@GetMapping("/formVideojuego")
-	public String getFormVideojuego(@RequestParam(required=false) String id, Model model) {
+	public String getFormVideojuego(@RequestParam(required=false) Integer id, Model model) {
 		
 		if (id != null) {
-			model.addAttribute("videojuego", videoService.findVideojuegoById(Integer.parseInt(id)));
+			model.addAttribute("videojuego", videoService.findVideojuegoById(id));
 		} else {
 			model.addAttribute("videojuego", new Videojuego());
 		}
@@ -55,8 +55,7 @@ public class VideojuegoController {
 	}
 	
 	@PostMapping("/formVideojuego")
-	public String newVideojuego(@RequestParam(required=false) String id, 
-			@ModelAttribute("videojuego") Videojuego videojuego, Model model) {
+	public String newVideojuego(@ModelAttribute("videojuego") Videojuego videojuego, Model model) {
 		
 		videojuego.setImagen("imagen-default.jpg");
 		

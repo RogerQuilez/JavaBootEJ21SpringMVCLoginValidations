@@ -49,7 +49,7 @@ public class LoginController {
 		
 		if (messages.get(0) == "Usuario registrado correctamente") {
 			model.addAttribute("message", messages.get(0));
-			return "login";
+			return "redirect:/login";
 		} else {
 			model.addAttribute("messages", messages);
 			return "formRegistro";
