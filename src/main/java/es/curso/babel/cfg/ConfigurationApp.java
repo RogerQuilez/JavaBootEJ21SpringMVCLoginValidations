@@ -9,8 +9,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -31,6 +34,17 @@ public class ConfigurationApp {
 		ds.setPassword("");
 		return ds;
 	}
+	
+	 @Bean
+	 public DataSourceInitializer dataSourceInitializer() {
+	     ResourceDatabasePopulator resourceDatabasePopulator = new ResourceDatabasePopulator();
+	     resourceDatabasePopulator.addScript(new ClassPathResource("/data.sql"));
+
+	     DataSourceInitializer dataSourceInitializer = new DataSourceInitializer();
+	     dataSourceInitializer.setDataSource(dataSource());
+	     dataSourceInitializer.setDatabasePopulator(resourceDatabasePopulator);
+	     return dataSourceInitializer;
+	 }
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean 
@@ -43,7 +57,7 @@ public class ConfigurationApp {
 		
 		Properties jpaProperties = new Properties();
 		jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
-		jpaProperties.put("hibernate.hbm2ddl.auto", "update");
+		jpaProperties.put("hibernate.hbm2ddl.auto", "create-drop");
 		jpaProperties.put("hibernate.show_sql", "true");
 		jpaProperties.put("hibernate.format_sql", "false");
 		entityManagerFactoryBean.setJpaProperties(jpaProperties);
