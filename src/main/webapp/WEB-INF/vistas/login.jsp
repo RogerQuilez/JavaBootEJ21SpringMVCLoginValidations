@@ -115,6 +115,10 @@ h2 {
 	color: red;
 }
 
+.correct {
+	color: green;
+}
+
 @media screen and (max-width: 832px) {
 	#login-panel, #signup-panel {
 		width: 245px;
@@ -131,6 +135,7 @@ h2 {
 	<div id="login-panel">
 		<h3>Iniciar sesión</h3>
 		<h2>${empty message ? "" : message}</h2>
+		<h2 class="correct">${param.message}</h2>
 		<form action="login" method="POST">
 			<input type="text" name="username" placeholder="Usuario"> <input
 				type="password" name="password" placeholder="Contraseña">
