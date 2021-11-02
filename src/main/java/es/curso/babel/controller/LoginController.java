@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.curso.babel.model.entity.Usuario;
 import es.curso.babel.model.service.UsuarioService;
 
 @Controller
@@ -17,6 +18,9 @@ public class LoginController {
 	
 	@Autowired
 	private UsuarioService userService;
+	
+	@Autowired
+	private Usuario usuario;
 	
 	@RequestMapping(value= {"", "login"})
 	public String getLogin() {
@@ -26,8 +30,12 @@ public class LoginController {
 	@PostMapping("login")
 	public String login(@RequestParam("username") String username, 
 			@RequestParam("password") String password, Model model) {
+		
+		Usuario usuarioRegistered = userService.isUsuarioRegistered(username, password);
 
-		if (userService.isUsuarioRegistered(username, password)) {
+		if (usuarioRegistered != null) {
+			usuario.setUsername(usuarioRegistered.getUsername());
+			usuario.setId(usuarioRegistered.getId());
 			return "redirect:/videojuegos";
 		} else {
 			model.addAttribute("message", "El usuario no se encuentra registrado");

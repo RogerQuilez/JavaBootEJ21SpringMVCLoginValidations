@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -142,9 +143,7 @@ button:last-of-type:hover {
         
         <span><b>Nota: </b> ${videojuego.nota}</span>
       </div>
-      
-      <button>Proceed to Payment</button>
-      <button>Cancel Order</button>
+         				
     </div>
       
 </body>

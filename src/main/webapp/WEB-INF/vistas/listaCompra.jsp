@@ -5,19 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Table Component</title>
-
+	
 <style>
 * {
 	margin: 0;
@@ -100,41 +96,25 @@ button {
 	box-shadow: 2px 2px 3px #999;
 }
 
-.shopping-cart {
-	position: fixed;
-	width: 60px;
-	height: 60px;
-	top: 40px;
-	right: 40px;
-	background-color: #0C9;
-	color: #FFF;
-	border-radius: 50px;
-	text-align: center;
-	box-shadow: 2px 2px 3px #999;
-}
-
 .my-float {
 	margin-top: 8px;
 	font-size: 40px;
 }
+
+.price {
+	text-align: center;
+}
 </style>
+
 </head>
 <body>
 
-	<a href="videojuegos/formVideojuego" class="float"> <span
-		class="material-icons my-float"> add </span>
-	</a>
-	
-	<a href="videojuegos/orders">Orders</a>
-
-	<a href="videojuegos/carritoCompra" class="shopping-cart"> <span
-		class="material-icons my-float"> shopping_cart </span>
-	</a>
 
 	<table>
-
+	
+		
+		
 		<thead>
-
 			<tr>
 				<th>ID</th>
 				<th>Nombre</th>
@@ -142,58 +122,36 @@ button {
 				<th>Nota Media</th>
 				<th>Precio</th>
 				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
 			</tr>
 		</thead>
 
 		<tbody>
 
-			<c:forEach items="${videojuegos}" var="videojuego">
+			<c:forEach items="${listaCompra}" var="videojuego">
 				<tr>
 					<td><c:out value="${videojuego.id}"></c:out></td>
 					<td><c:out value="${videojuego.nombre}"></c:out></td>
 					<td><c:out value="${videojuego.compania}"></c:out></td>
 					<td><c:out value="${videojuego.nota}"></c:out></td>
-					
 					<td><fmt:formatNumber value="${videojuego.price}" type="currency"
 														currencySymbol="euro" pattern="#,###,##0.00 "/></td>
 					<td><a
-						href="<c:url value="videojuegos/detalle">
-                				<c:param name="id" value="${videojuego.id}"/>
-         				</c:url>"><button
-								class="detalle">Ver más</button></a></td>
-
-					<td><a
-						href="<c:url value="videojuegos/formVideojuego">
-                				<c:param name="id" value="${videojuego.id}"/>
-         				</c:url>"><button
-								class="modificar">Modificar</button></a></td>
-
-					<td><a
-						href="<c:url value="videojuegos/delete">
-                				<c:param name="id" value="${videojuego.id}"/>
-         				</c:url>"><button
-								class="eliminar">Eliminar</button></a></td>
-								
-					<td><a href="<c:url value="videojuegos/addVideojuego">
+						href="<c:url value="videojuegos/addVideojuego">
                 				<c:param name="id" value="${videojuego.id}"/>
          				</c:url>"><span
-										class="glyphicon glyphicon-plus-sign"></span>
-						</a>
-						
-						<a href="<c:url value="videojuegos/removeVideojuego">
+							class="glyphicon glyphicon-plus-sign"></span> </a> <a
+						href="<c:url value="videojuegos/removeVideojuego">
                 				<c:param name="id" value="${videojuego.id}"/>
          				</c:url>"><span
-										class="glyphicon glyphicon-minus-sign"></span>
-						</a>
-										
-										
-					</td>
+							class="glyphicon glyphicon-minus-sign"></span> </a></td>
+					
 				</tr>
 			</c:forEach>
-
+				<tr>
+					<td colspan="2">Total Price:</td>
+					<td class="price" colspan="3">${total}</td>
+					<td><a href="carritoCompra/comprar"><button>Comprar!</button></a></td>
+				</tr>
 		</tbody>
 	</table>
 </body>

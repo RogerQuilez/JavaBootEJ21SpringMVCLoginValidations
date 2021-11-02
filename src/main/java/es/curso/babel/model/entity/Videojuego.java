@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Videojuego {
@@ -11,11 +14,23 @@ public class Videojuego {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private String imagen;
+
+	@NotEmpty(message="El campo nombre no puede estar vacío")
 	private String nombre;
+	
+	@NotEmpty(message="El campo compañia no puede estar vacío")
 	private String compania;
+	
+	@Min(0)
+	@Max(10)
 	private double nota;
+	
+	@NotEmpty(message="El campo autor no puede estar vacío")
 	private String author;
+	
+	private int price;
 	
 	public int getId() {
 		return id;
@@ -63,6 +78,20 @@ public class Videojuego {
 
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Videojuego [id=" + id + ", imagen=" + imagen + ", nombre=" + nombre + ", compania=" + compania
+				+ ", nota=" + nota + ", author=" + author + ", price=" + price + "]";
 	}
 
 }

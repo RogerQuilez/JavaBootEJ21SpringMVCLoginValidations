@@ -8,6 +8,6 @@ public interface VideojuegoService {
 
 	List<Videojuego> getAllVideojuegos();
 	Videojuego findVideojuegoById(int id);
-	List<String> añadirVideojuego(Videojuego videojuego);
+	void añadirVideojuego(Videojuego videojuego);
 	void eliminarVideojuego(int id);
 }

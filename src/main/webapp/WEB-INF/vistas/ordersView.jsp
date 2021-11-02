@@ -121,79 +121,50 @@ button {
 </head>
 <body>
 
-	<a href="videojuegos/formVideojuego" class="float"> <span
-		class="material-icons my-float"> add </span>
-	</a>
-	
-	<a href="videojuegos/orders">Orders</a>
-
-	<a href="videojuegos/carritoCompra" class="shopping-cart"> <span
-		class="material-icons my-float"> shopping_cart </span>
-	</a>
-
 	<table>
 
 		<thead>
 
 			<tr>
-				<th>ID</th>
-				<th>Nombre</th>
-				<th>Compañia</th>
-				<th>Nota Media</th>
-				<th>Precio</th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
+				<th>Fecha</th>
+				<th>Videojuegos</th>
+				<th>Total</th>
 			</tr>
 		</thead>
 
 		<tbody>
-
-			<c:forEach items="${videojuegos}" var="videojuego">
+			<c:forEach items="${orders}" var="order">
 				<tr>
-					<td><c:out value="${videojuego.id}"></c:out></td>
-					<td><c:out value="${videojuego.nombre}"></c:out></td>
-					<td><c:out value="${videojuego.compania}"></c:out></td>
-					<td><c:out value="${videojuego.nota}"></c:out></td>
-					
-					<td><fmt:formatNumber value="${videojuego.price}" type="currency"
-														currencySymbol="euro" pattern="#,###,##0.00 "/></td>
-					<td><a
-						href="<c:url value="videojuegos/detalle">
-                				<c:param name="id" value="${videojuego.id}"/>
-         				</c:url>"><button
-								class="detalle">Ver más</button></a></td>
-
-					<td><a
-						href="<c:url value="videojuegos/formVideojuego">
-                				<c:param name="id" value="${videojuego.id}"/>
-         				</c:url>"><button
-								class="modificar">Modificar</button></a></td>
-
-					<td><a
-						href="<c:url value="videojuegos/delete">
-                				<c:param name="id" value="${videojuego.id}"/>
-         				</c:url>"><button
-								class="eliminar">Eliminar</button></a></td>
-								
-					<td><a href="<c:url value="videojuegos/addVideojuego">
-                				<c:param name="id" value="${videojuego.id}"/>
-         				</c:url>"><span
-										class="glyphicon glyphicon-plus-sign"></span>
-						</a>
-						
-						<a href="<c:url value="videojuegos/removeVideojuego">
-                				<c:param name="id" value="${videojuego.id}"/>
-         				</c:url>"><span
-										class="glyphicon glyphicon-minus-sign"></span>
-						</a>
-										
-										
+					<td><c:out value="${order.date}"/></td>
+					<td>
+					<table>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nombre</th>
+								<th>Compañia</th>
+								<th>Nota Media</th>
+								<th>Precio</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${order.videojuegos}" var="videojuego">
+								<tr>
+									<td><c:out value="${videojuego.id}"></c:out></td>
+									<td><c:out value="${videojuego.nombre}"></c:out></td>
+									<td><c:out value="${videojuego.compania}"></c:out></td>
+									<td><c:out value="${videojuego.nota}"></c:out></td>
+									<td><fmt:formatNumber value="${videojuego.price}" type="currency"
+														currencySymbol="euro" pattern="#,###,##0.00 "/></td>				
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 					</td>
+					<td><fmt:formatNumber value="${order.calcularTotal()}" type="currency"
+														currencySymbol="euro" pattern="#,###,##0.00 "/></td>
 				</tr>
 			</c:forEach>
-
 		</tbody>
 	</table>
 </body>

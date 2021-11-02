@@ -22,15 +22,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public boolean isUsuarioRegistered(String username, String password) {
-		Usuario user = userRepo.findById(username).orElse(null);
+	public Usuario isUsuarioRegistered(String username, String password) {
+		Usuario user = userRepo.findByUsername(username);
 		if (user != null) {
 			if (user.getUsername().equals(username) &&
 					user.getPassword().equals(password)) {
-				return true;
+				return user;
 			}
 		}
-		return false;
+		return null;
 	}
 
 	@Override
@@ -65,6 +65,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return messages;
 	}
 
-	
+	@Override
+	public Usuario findByUsername(String username) {
+		return userRepo.findByUsername(username);
+	}
 
 }
