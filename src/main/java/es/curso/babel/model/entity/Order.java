@@ -10,8 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +25,7 @@ public class Order {
 	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	private Usuario usuario;
 	
-	@OneToMany(cascade = CascadeType.MERGE, fetch=FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.MERGE, fetch=FetchType.EAGER)
 	private List<Videojuego> videojuegos = new LinkedList<Videojuego>();
 	private Date date;
 	

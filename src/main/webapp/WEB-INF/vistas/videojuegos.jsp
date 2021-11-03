@@ -117,6 +117,19 @@ button {
 	margin-top: 8px;
 	font-size: 40px;
 }
+
+.orders {
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	top: 200px;
+	right: 40px;
+	background-color: #0C9;
+	color: #FFF;
+	border-radius: 50px;
+	text-align: center;
+	box-shadow: 2px 2px 3px #999;
+}
 </style>
 </head>
 <body>
@@ -125,8 +138,8 @@ button {
 		class="material-icons my-float"> add </span>
 	</a>
 	
-	<a href="videojuegos/orders">
-		<span class="material-icons">
+	<a href="videojuegos/orders" class="orders">
+		<span class="material-icons my-float">
 		local_shipping
 		</span>
 	</a>
