@@ -150,7 +150,10 @@ public class VideojuegoController {
 		}
 		
 		order.setDate(new Date());
+		System.out.println(order);
+
 		orderService.save(order);
+		
 		sessionStatus.setComplete();
 		return "redirect:/videojuegos";
 	}

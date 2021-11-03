@@ -125,7 +125,11 @@ button {
 		class="material-icons my-float"> add </span>
 	</a>
 	
-	<a href="videojuegos/orders">Orders</a>
+	<a href="videojuegos/orders">
+		<span class="material-icons">
+		local_shipping
+		</span>
+	</a>
 
 	<a href="videojuegos/carritoCompra" class="shopping-cart"> <span
 		class="material-icons my-float"> shopping_cart </span>
