@@ -1,5 +1,7 @@
 package es.curso.babel.model.entity;
 
+import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -92,6 +94,25 @@ public class Videojuego {
 	public String toString() {
 		return "Videojuego [id=" + id + ", imagen=" + imagen + ", nombre=" + nombre + ", compania=" + compania
 				+ ", nota=" + nota + ", author=" + author + ", price=" + price + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(author, compania, id, imagen, nombre, nota, price);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Videojuego other = (Videojuego) obj;
+		return Objects.equals(author, other.author) && Objects.equals(compania, other.compania) && id == other.id
+				&& Objects.equals(imagen, other.imagen) && Objects.equals(nombre, other.nombre)
+				&& Double.doubleToLongBits(nota) == Double.doubleToLongBits(other.nota) && price == other.price;
 	}
 
 }

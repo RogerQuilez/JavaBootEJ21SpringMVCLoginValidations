@@ -136,11 +136,11 @@ button {
 					<td><fmt:formatNumber value="${videojuego.price}" type="currency"
 														currencySymbol="euro" pattern="#,###,##0.00 "/></td>
 					<td><a
-						href="<c:url value="videojuegos/addVideojuego">
+						href="<c:url value="addVideojuego">
                 				<c:param name="id" value="${videojuego.id}"/>
          				</c:url>"><span
 							class="glyphicon glyphicon-plus-sign"></span> </a> <a
-						href="<c:url value="videojuegos/removeVideojuego">
+						href="<c:url value="removeVideojuego">
                 				<c:param name="id" value="${videojuego.id}"/>
          				</c:url>"><span
 							class="glyphicon glyphicon-minus-sign"></span> </a></td>

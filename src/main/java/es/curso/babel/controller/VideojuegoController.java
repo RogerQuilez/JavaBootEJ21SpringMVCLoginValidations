@@ -50,7 +50,7 @@ public class VideojuegoController {
 	}
 	
 	@GetMapping("")
-	public ModelAndView getVideojuegos(@ModelAttribute("order") Order order) {
+	public ModelAndView getVideojuegos() {
 		if(usuario.getUsername() == null) {
 			return new ModelAndView("redirect:/login");
 		}
@@ -61,7 +61,7 @@ public class VideojuegoController {
 	}
 	
 	@GetMapping("/detalle")
-	public ModelAndView getVideojuegoDetalle(@RequestParam("id") int id, @ModelAttribute("order") Order order) {
+	public ModelAndView getVideojuegoDetalle(@RequestParam("id") int id) {
 		if(usuario.getUsername() == null) {
 			return new ModelAndView("redirect:/login");
 		}
